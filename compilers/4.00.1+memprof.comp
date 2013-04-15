@@ -1,7 +1,12 @@
 opam-version: "1"
 version: "4.00.1"
-src: "https://github.com/cago/ocaml/tree/4.00.1+memprof"
-make: [ "world world.opt" ]
+src: "https://github.com/cago/ocaml/tarball/4.00.1+memprof"
+build: [
+  ["./configure" "-prefix" "%{prefix}%"]
+  ["%{make}%" "world"]
+  ["%{make}%" "world.opt"]
+  ["%{make}%" "install"]
+]
 packages : [ "base-unix" "base-bigarray" "base-threads" ]
 env: [
   [ CAML_LD_LIBRARY_PATH = "%{lib}%/stublibs" ]

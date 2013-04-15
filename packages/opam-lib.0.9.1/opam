@@ -4,7 +4,7 @@ substs: ["depends.ocp"]
 build: [
   ["./configure" "--prefix=%{prefix}%" "--mandir=%{prefix}%/man"]
   [make "META"]
-  [make "compile"]
+  [make "LOCAL_OCPBUILD=ocp-build" "compile"]
   [make "libinstall"]
   ["rm" "opam.install"]
 ]
@@ -14,7 +14,9 @@ depends: [
   "dose" {= "3.1.2"}
   "cudf"
   "re" {>= "1.2.0"}
+  "ocamlfind"
 ]
 remove: [
   ["ocamlfind" "remove" "opam"]
 ]
+homepage: "https://github.com/OCamlPro/opam"
